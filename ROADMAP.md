@@ -1,34 +1,37 @@
-# Joey's DevOps Journey Roadmap
+# Joey Kano — DevOps Becoming a God Roadmap
 
-## Stage 1 — Foundations (DONE)
-- Installed Git
-- Created GitHub repo
-- Linked Linux to GitHub
-- Pushed first commit
+## Stage 1 — Foundations (Completed Like a Beast)
+- Linux setup & terminal mastery
+- Git + GitHub workflow established
+- Docker installed + configured
+- Built and ran first containerized web app
+- Repository pushed + automated authentication
 
-## Stage 2 — Docker Project (NEXT)
-- Create Dockerfile
-- Build image locally
-- Run container
-- Push Docker image to Docker Hub (future)
-- Document everything in README
+## Stage 2 — Docker Mastery (In Progress — Dominating)
+- Design multi-container architecture
+- Build & tag images consistently
+- Run controlled networking between containers
+- Push images to registries
+- Secure container configs + logs
 
-## Stage 3 — CI/CD Pipeline (COMING LATER)
-- GitHub Actions pipeline
-- Build Docker image
-- Run automated tests
-- Push updates automatically on commit
+## Stage 3 — CI/CD (Next Phase — War Mode)
+- Integrate GitHub Actions pipeline
+- Automate build → test → deploy
+- Auto Docker build on every push
+- Container scanning & QA
+- Pipeline artifact storage
 
-## Stage 4 — AWS Deployment (FUTURE)
-- Create AWS account and IAM user
-- Deploy app to EC2 or ECS
-- Monitor with CloudWatch
-- Add Terraform later
+## Stage 4 — Cloud Deployment (Future — Legend Arc)
+- Create AWS EC2 deployment pipeline
+- Configure IAM + security policies
+- Deploy containers to cloud infrastructure
+- Monitor logs + metrics like a king
 
-## Goals
-- Build portfolio on GitHub
-- Get DevOps job ready foundations
-- Learn by doing, not reading
+## Stage 5 — Final Form
+- Become hire-ready DevOps engineer
+- Build portfolio projects publicly
+- Interviews + preparation
+- Get hired. Not walking — arriving.
 
 ## Notes
-Joey owns this journey. Control the repo. Control the pipeline.
+This repo is the living proof of my ascending from beginner to DevOps godhood.
