@@ -19,4 +19,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t joey-web-app ./app
+        run: docker build -t jkanodev/joey-web-app:latest ./app
