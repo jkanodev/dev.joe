@@ -1,12 +1,11 @@
-# Uses Docker Hub credentials stored as GitHub Secrets
-name: CI Docker Build
+name: CI Docker Build and Deploy
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -19,10 +18,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
+        run: docker build -t jkanodev/joey-web-app:latest ./app
 
       - name: Push Docker image
         run: docker push jkanodev/joey-web-app:latest
-        run: docker build -t jkanodev/joey-web-app:latest ./app
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
