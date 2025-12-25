@@ -3,81 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joey DevOps App</title>
+  <title>Joey · DevOps Portfolio</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-                   Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    :root {
+      --bg: #0b0f14;
+      --panel: #121824;
+      --ink: #e7ecf3;
+      --muted: #9aa4b2;
+      --accent: #7cf3d0;
+      --accent-2: #6aa6ff;
+      --glow: 0 0 0 rgba(124,243,208,0);
     }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu; }
+
+    /* subtle animated background */
+    body::before {
+      content: "";
+      position: fixed; inset: -20%;
+      background:
+        radial-gradient(600px 300px at 10% 10%, rgba(124,243,208,.08), transparent 60%),
+        radial-gradient(600px 300px at 90% 20%, rgba(106,166,255,.08), transparent 60%),
+        radial-gradient(800px 400px at 50% 90%, rgba(124,243,208,.06), transparent 60%);
+      filter: blur(30px);
+      animation: drift 18s linear infinite;
+      z-index: -1;
     }
+    @keyframes drift { 0%{transform:translateY(0)} 50%{transform:translateY(-2%)} 100%{transform:translateY(0)} }
+
+    header {
+      position: sticky; top: 0;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(to bottom, rgba(11,15,20,.85), rgba(11,15,20,.4));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      z-index: 10;
+    }
+    nav {
+      max-width: 1100px; margin: 0 auto; padding: 14px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 14px; }
+    nav a:hover { color: var(--ink); }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 56px 18px; }
+
+    .hero {
+      display: grid; gap: 24px; grid-template-columns: 1.2fr .8fr;
+      align-items: center; margin-top: 24px;
+    }
+    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
 
     .card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 14px;
-      padding: 40px;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 70px rgba(0,0,0,.45);
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 10px; }
+    h2 { margin: 0 0 10px; }
+    p { color: var(--muted); line-height: 1.6; }
+
+    .pill {
+      display: inline-flex; gap: 8px; align-items: center;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(124,243,208,.12);
+      color: var(--accent);
+      border: 1px solid rgba(124,243,208,.25);
+      box-shadow: var(--glow);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%{ box-shadow: 0 0 0 rgba(124,243,208,0); }
+      50%{ box-shadow: 0 0 22px rgba(124,243,208,.25); }
+      100%{ box-shadow: 0 0 0 rgba(124,243,208,0); }
     }
 
-    p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
 
-    .badge {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(0, 255, 180, 0.15);
-      color: #00ffb4;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
+    .tag { display:inline-block; padding:6px 10px; border-radius:8px; border:1px solid rgba(255,255,255,.1); color:#cdd6e3; margin:6px 6px 0 0; }
 
-    footer {
-      margin-top: 30px;
-      font-size: 0.85rem;
-      opacity: 0.6;
-    }
+    footer { color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Joey’s First DevOps App</h1>
+  <header>
+    <nav>
+      <strong>Joey · DevOps</strong>
+      <div>
+        <a href="#built">What I Built</a>
+        <a href="#flow">Pipeline</a>
+        <a href="#status">Status</a>
+      </div>
+    </nav>
+  </header>
 
-    <p>
-      This site is running inside a Docker container on Linux, deployed automatically
-      using GitHub Actions and AWS EC2.
-    </p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="card">
+        <span class="pill">Live · Auto-Deployed · Free-Tier Safe</span>
+        <h1>From Laptop to Production</h1>
+        <p>
+          A real CI/CD pipeline: Dockerized app, GitHub Actions builds and pushes,
+          AWS EC2 pulls and deploys automatically via SSH.
+        </p>
+      </div>
 
-    <span class="badge">CI/CD · Docker · AWS · Linux</span>
+      <div class="card">
+        <h2>Tech</h2>
+        <span class="tag">Docker</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">AWS EC2</span>
+        <span class="tag">Linux</span>
+        <span class="tag">CI/CD</span>
+      </div>
+    </section>
 
-    <footer>
-      Built and deployed by Joey
-    </footer>
-  </div>
+    <section id="built" class="wrap">
+      <div class="grid">
+        <div class="card"><h2>Local</h2><p>Built and ran the app locally in Docker.</p></div>
+        <div class="card"><h2>CI</h2><p>Automated build and push on every commit.</p></div>
+        <div class="card"><h2>CD</h2><p>Secure SSH deploy to EC2 using a script.</p></div>
+      </div>
+    </section>
+
+    <section id="flow" class="wrap">
+      <div class="card">
+        <h2>Pipeline</h2>
+        <p>Git push → GitHub Actions → Docker Hub → EC2 → Live</p>
+      </div>
+    </section>
+
+    <section id="status" class="wrap">
+      <div class="card">
+        <h2>Status</h2>
+        <p>Running in production with zero backend cost.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Built by Joey · Dark theme · Motion via CSS only
+  </footer>
 </body>
 </html>
-
