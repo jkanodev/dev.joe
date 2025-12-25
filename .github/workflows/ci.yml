@@ -1,0 +1,12 @@
+name: CI Dry Run
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "CI pipeline is alive"
