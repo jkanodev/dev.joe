@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Joey DevOps Web App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joey DevOps App</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                   Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0, 255, 180, 0.15);
+      color: #00ffb4;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to Joey's First DevOps App!</h1>
-    <p>This page is running inside a Docker container on Linux.</p>
+  <div class="card">
+    <h1>Joey’s First DevOps App</h1>
+
+    <p>
+      This site is running inside a Docker container on Linux, deployed automatically
+      using GitHub Actions and AWS EC2.
+    </p>
+
+    <span class="badge">CI/CD · Docker · AWS · Linux</span>
+
+    <footer>
+      Built and deployed by Joey
+    </footer>
+  </div>
 </body>
 </html>
+
